@@ -7,6 +7,11 @@ export const getNote = /* GraphQL */ `
       id
       name
       description
+      agegroup
+      gender
+      location
+      date
+      time
       createdAt
       updatedAt
     }
@@ -23,6 +28,11 @@ export const listNotes = /* GraphQL */ `
         id
         name
         description
+        agegroup
+        gender
+        location
+        date
+        time
         createdAt
         updatedAt
       }

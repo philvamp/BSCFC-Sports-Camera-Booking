@@ -138,6 +138,12 @@ const App = ({ signOut }) => {
               {note.name}
             </Text>
             <Text as="span">{note.description}</Text>
+            <Text as="span">{note.agegroup}</Text>
+            <Text as="span">{note.gender}</Text>
+            <Text as="span">{note.location}</Text>
+            <Text as="span">{note.date}</Text>
+            <Text as="span">{note.time}</Text>
+    
             <Button variation="link" onClick={() => deleteNote(note)}>
               Delete booking
             </Button>
