@@ -36,6 +36,11 @@ const App = ({ signOut }) => {
     const data = {
       name: form.get("name"),
       description: form.get("description"),
+      agegroup: form.get("agegroup"),
+      gender: form.get("gender"),
+      location: form.get("location"),
+      date: form.get("date"),
+      time: form.get("time"),
     };
     await API.graphql({
       query: createNoteMutation,
@@ -56,31 +61,71 @@ const App = ({ signOut }) => {
 
   return (
     <View className="App">
-      <Heading level={1}>My Notes App</Heading>
+      <Heading level={1}>BSCFC Sports Camera Booking System</Heading>
       <View as="form" margin="3rem 0" onSubmit={createNote}>
         <Flex direction="row" justifyContent="center">
           <TextField
             name="name"
-            placeholder="Note Name"
-            label="Note Name"
+            placeholder="Mangers Name"
+            label="Managers Name"
             labelHidden
             variation="quiet"
             required
           />
           <TextField
             name="description"
-            placeholder="Note Description"
-            label="Note Description"
+            placeholder="Team Name"
+            label="Team Name"
+            labelHidden
+            variation="quiet"
+            required
+          />
+          <TextField
+            name="agegroup"
+            placeholder="Age Group"
+            label="AGe Group"
+            labelHidden
+            variation="quiet"
+            required
+          />
+          <TextField
+            name="gender"
+            placeholder="Gender"
+            label="Gender"
+            labelHidden
+            variation="quiet"
+            required
+          />
+          <TextField
+            name="location"
+            placeholder="Location"
+            label="Location"
+            labelHidden
+            variation="quiet"
+            required
+          />
+          <TextField
+            name="date"
+            placeholder="Date"
+            label="Date"
+            labelHidden
+            variation="quiet"
+            required
+          />
+          <TextField
+            name="time"
+            placeholder="Time"
+            label="Time"
             labelHidden
             variation="quiet"
             required
           />
           <Button type="submit" variation="primary">
-            Create Note
+            Create Booking
           </Button>
         </Flex>
       </View>
-      <Heading level={2}>Current Notes</Heading>
+      <Heading level={2}>Current Bookings</Heading>
       <View margin="3rem 0">
         {notes.map((note) => (
           <Flex
@@ -94,7 +139,7 @@ const App = ({ signOut }) => {
             </Text>
             <Text as="span">{note.description}</Text>
             <Button variation="link" onClick={() => deleteNote(note)}>
-              Delete note
+              Delete booking
             </Button>
           </Flex>
         ))}
