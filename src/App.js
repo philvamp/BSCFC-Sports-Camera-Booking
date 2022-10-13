@@ -14,7 +14,8 @@ import {
 import { listNotes } from "./graphql/queries";
 import {
   createNote as createNoteMutation,
-  deleteNote as deleteNoteMutation,
+ // deleteNote as deleteNoteMutation,
+  updateNote as updateNoteMutation,
 } from "./graphql/mutations";
 
 const App = ({ signOut }) => {
@@ -24,24 +25,32 @@ const App = ({ signOut }) => {
     fetchNotes();
   }, []);
 
-  async function fetchNotes() {
-    const apiData = await API.graphql({ query: listNotes });
+  async function fetchNotes() 
+  {
+    let filter = {
+     isdeleted: {
+          eq: "false"
+      }
+    };
+    const apiData = await API.graphql({ query: listNotes, variables: { filter: filter}});
     const notesFromAPI = apiData.data.listNotes.items;
     setNotes(notesFromAPI);
-  }
+  };
+  
 
   async function createNote(event) {
     event.preventDefault();
     const form = new FormData(event.target);
-    const data = {
+    const data = { 
       name: form.get("name"),
       description: form.get("description"),
       agegroup: form.get("agegroup"),
       gender: form.get("gender"),
       location: form.get("location"),
       date: form.get("date"),
-      time: form.get("time"),
-    };
+      time: form.get("time"),  
+      isdeleted: "false",
+       };
     await API.graphql({
       query: createNoteMutation,
       variables: { input: data },
@@ -50,14 +59,33 @@ const App = ({ signOut }) => {
     event.target.reset();
   }
 
-  async function deleteNote({ id }) {
+  async function updateNote({ id }) 
+  {
+       const updatedNote = notes.filter((note) => note.id !== id);
+       const my_id = id;
+       const myversion = "1";
+       const data = {id: my_id, isdeleted: "true", _version: myversion };
+     
+    setNotes(updatedNote);
+    await API.graphql({
+        query: updateNoteMutation,
+        variables: { input: data },
+    });
+
+    fetchNotes();
+  } 
+
+  /* async function deleteNote({ id })  
+  {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
+
     await API.graphql({
       query: deleteNoteMutation,
       variables: { input: { id } },
     });
-  }
+  }*/
+
 
   return (
     <View className="App">
@@ -125,6 +153,9 @@ const App = ({ signOut }) => {
           </Button>
         </Flex>
       </View>
+
+
+
       <Heading level={2}>Current Bookings</Heading>
       <View margin="3rem 0">
         {notes.map((note) => (
@@ -143,13 +174,13 @@ const App = ({ signOut }) => {
             <Text as="span">{note.location}</Text>
             <Text as="span">{note.date}</Text>
             <Text as="span">{note.time}</Text>
-    
-            <Button variation="link" onClick={() => deleteNote(note)}>
+            <Text as="span">{note.isdeleted}</Text>
+            <Button variation="link" onClick={() => updateNote(note)}>
               Delete booking
             </Button>
           </Flex>
         ))}
-      </View>
+      </View> 
       <Button onClick={signOut}>Sign Out</Button>
     </View>
   );

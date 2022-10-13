@@ -170,7 +170,7 @@
         "interfaces" : null,
         "enumValues" : null,
         "possibleTypes" : null
-      }, {
+      }, { 
         "kind" : "SCALAR",
         "name" : "String",
         "description" : "Built-in String",
