@@ -174,7 +174,6 @@ const App = ({ signOut }) => {
             <Text as="span">{note.location}</Text>
             <Text as="span">{note.date}</Text>
             <Text as="span">{note.time}</Text>
-            <Text as="span">{note.isdeleted}</Text>
             <Button variation="link" onClick={() => updateNote(note)}>
               Delete booking
             </Button>
