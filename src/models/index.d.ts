@@ -13,6 +13,7 @@ export declare class Note {
   readonly location?: string | null;
   readonly date?: string | null;
   readonly time?: string | null;
+  readonly isdeleted?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Note, NoteMetaData>);

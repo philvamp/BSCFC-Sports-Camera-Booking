@@ -1,4 +1,4 @@
-/* eslint-disable */
+ /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
 export const createNote = /* GraphQL */ `
@@ -10,6 +10,12 @@ export const createNote = /* GraphQL */ `
       id
       name
       description
+      agegroup
+      gender
+      location
+      date
+      time
+      isdeleted
       createdAt
       updatedAt
     }
@@ -24,6 +30,12 @@ export const updateNote = /* GraphQL */ `
       id
       name
       description
+      agegroup
+      gender
+      location
+      date
+      time
+      isdeleted
       createdAt
       updatedAt
     }
@@ -38,6 +50,12 @@ export const deleteNote = /* GraphQL */ `
       id
       name
       description
+      agegroup
+      gender
+      location
+      date
+      time
+      isdeleted
       createdAt
       updatedAt
     }
