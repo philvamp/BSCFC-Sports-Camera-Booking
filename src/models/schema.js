@@ -59,13 +59,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "isdeleted": {
-                    "name": "isdeleted",
-                    "isArray": false,
-                    "type": "boolean",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,

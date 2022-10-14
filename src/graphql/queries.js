@@ -7,12 +7,6 @@ export const getNote = /* GraphQL */ `
       id
       name
       description
-      agegroup
-      gender
-      location
-      date
-      time
-      isdeleted
       createdAt
       updatedAt
     }
@@ -20,27 +14,19 @@ export const getNote = /* GraphQL */ `
 `;
 export const listNotes = /* GraphQL */ `
   query ListNotes(
-    $filter: ModelNoteFilterInput  
+    $filter: ModelNoteFilterInput
     $limit: Int
-    $nextToken: String 
+    $nextToken: String
   ) {
     listNotes(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name
         description
-        agegroup
-        gender
-        location
-        date
-        time
-        isdeleted
         createdAt
         updatedAt
       }
       nextToken
     }
   }
-
-  `;
-
+`;
