@@ -6,12 +6,16 @@ export const getNote = /* GraphQL */ `
     getNote(id: $id) {
       id
       name
+      contact
       description
       agegroup
       gender
       location
+      pitch
       date
       time
+      realdate
+      realtime
       isdeleted
       createdAt
       updatedAt
@@ -28,12 +32,16 @@ export const listNotes = /* GraphQL */ `
       items {
         id
         name
+        contact
         description
         agegroup
         gender
         location
+        pitch
         date
         time
+        realdate
+        realtime
         isdeleted
         createdAt
         updatedAt

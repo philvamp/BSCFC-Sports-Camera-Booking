@@ -9,12 +9,16 @@ export const createNote = /* GraphQL */ `
     createNote(input: $input, condition: $condition) {
       id
       name
+      contact
       description
       agegroup
       gender
       location
+      pitch
       date
       time
+      realdate
+      realtime
       isdeleted
       createdAt
       updatedAt
@@ -29,12 +33,16 @@ export const updateNote = /* GraphQL */ `
     updateNote(input: $input, condition: $condition) {
       id
       name
+      contact
       description
       agegroup
       gender
       location
+      pitch
       date
       time
+      realdate
+      realtime
       isdeleted
       createdAt
       updatedAt
@@ -49,12 +57,16 @@ export const deleteNote = /* GraphQL */ `
     deleteNote(input: $input, condition: $condition) {
       id
       name
+      contact
       description
       agegroup
       gender
       location
+      pitch
       date
       time
+      realdate
+      realtime
       isdeleted
       createdAt
       updatedAt
