@@ -25,6 +25,10 @@ export const createNote = /* GraphQL */ `
     }
   }
 `;
+
+
+
+
 export const updateNote = /* GraphQL */ `
   mutation UpdateNote(
     $input: UpdateNoteInput!
@@ -49,6 +53,7 @@ export const updateNote = /* GraphQL */ `
     }
   }
 `;
+
 export const deleteNote = /* GraphQL */ `
   mutation DeleteNote(
     $input: DeleteNoteInput!
@@ -73,3 +78,4 @@ export const deleteNote = /* GraphQL */ `
     }
   }
 `;
+

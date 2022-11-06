@@ -10,7 +10,7 @@ import {
   TextField,
   View,
   withAuthenticator,} from "@aws-amplify/ui-react";
-import { listNotes } from "./graphql/queries";
+import { listNotes, byBookingDate } from "./graphql/queries";
 import {createNote  as createNoteMutation,updateNote as updateNoteMutation,} from "./graphql/mutations";
 
 
@@ -29,13 +29,20 @@ import {createNote  as createNoteMutation,updateNote as updateNoteMutation,} fro
   async function fetchNotes() 
   {
     console.log('fetching notes');
-   // var Today = new Date();
 
-   
-   var Today = new Date();
+    var Today = new Date(); 
+    const Yesterday = new Date(Today.getTime());
+    Yesterday.setDate(Yesterday.getDate() - 1);
+
+
    var someDate = new Date();
    var numberOfDaysToAdd = 28;
    var FutureDate = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
+
+   console.log("Future Date:", FutureDate);
+   console.log("Todays date:", Today);
+
+
    var myArray = getDatesInRange(Today, FutureDate);
    var dropdown = document.getElementById("date");  
    // Loop through the array
@@ -44,16 +51,19 @@ import {createNote  as createNoteMutation,updateNote as updateNoteMutation,} fro
      dropdown[dropdown.length] = new Option(myArray[i].toLocaleDateString('en-GB'), myArray[i].toLocaleDateString('en-GB'));
    }  
 
+    console.log("yesterday date:", Yesterday);
+
     let filter = 
     {
       isdeleted: {eq: "false"},
-      realdate: {ge: Today }
+      realdate: {ge: Yesterday }
     };
+
 
     const apiData = await API.graphql({ query: listNotes, variables: { filter: filter }});
     const notesFromAPI = apiData.data.listNotes.items;
-    setNotes(notesFromAPI);
-  
+    let sortedAsc = notesFromAPI.sort((a, b) => new Date(a.realdate) - new Date(b.realdate),); 
+    setNotes(sortedAsc);
   }
   
 

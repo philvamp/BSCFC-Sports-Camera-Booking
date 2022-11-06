@@ -20,9 +20,3 @@ type Note @model @auth(rules: [{allow: public}]) {
   pitch: String
 }
  
-type Todo @model {
-  id: ID!
-  title: String!
-  type: String! @index(name: "todosByDate", queryField: "todosByDate", sortKeyFields: ["createdAt"])
-  createdAt: String!
-}
