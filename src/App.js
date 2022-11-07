@@ -10,7 +10,7 @@ import {
   TextField,
   View,
   withAuthenticator,} from "@aws-amplify/ui-react";
-import { listNotes, byBookingDate } from "./graphql/queries";
+import { listNotes } from "./graphql/queries";
 import {createNote  as createNoteMutation,updateNote as updateNoteMutation,} from "./graphql/mutations";
 
 
@@ -18,12 +18,8 @@ import {createNote  as createNoteMutation,updateNote as updateNoteMutation,} fro
      const App = ({ signOut }) => {
       const [notes, setNotes] = useState([]);
     
-      useEffect(() => {
-        fetchNotes();
-      }, []);
-
-
-
+      useEffect(() => {  fetchNotes(); }, []);     
+       
 
 
   async function fetchNotes() 
@@ -148,28 +144,6 @@ import {createNote  as createNoteMutation,updateNote as updateNoteMutation,} fro
 
     fetchNotes();
   } 
-
-
-
-  function getdates()
-  {
-    console.log("start to get dates");
-    var Today = new Date();
-    var someDate = new Date();
-    var numberOfDaysToAdd = 28;
-    var FutureDate = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
-    var myArray = getDatesInRange(Today, FutureDate);
-    var dropdown = document.getElementById("date");  
-        
-    // Loop through the array
-    for (var i = 0; i < myArray.length; ++i) {
-     // Append the element to the end of Array list
-      dropdown[dropdown.length] = new Option(myArray[i].toLocaleDateString('en-GB'), myArray[i].toLocaleDateString('en-GB'));
-    }  
-     
-
-    return dropdown;
-  }
 
 
 
