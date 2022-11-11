@@ -1,0 +1,8 @@
+{
+    "appId": "io.ionic.amplifyapp11",
+    "appName": "amplifyapp11",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "build",
+    "cordova": {}
+  }

@@ -1,0 +1,7 @@
+{
+    "name": "amplifyapp11",
+    "integrations": {
+      "capacitor": {}
+    },
+    "type": "react"
+  }

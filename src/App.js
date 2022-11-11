@@ -18,7 +18,9 @@ import {createNote  as createNoteMutation,updateNote as updateNoteMutation,} fro
      const App = ({ signOut }) => {
       const [notes, setNotes] = useState([]);
     
-      useEffect(() => {  fetchNotes(); }, []);     
+      useEffect(() => {  fetchNotes(); 
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, []);     
        
 
 
@@ -99,7 +101,19 @@ import {createNote  as createNoteMutation,updateNote as updateNoteMutation,} fro
       return mydates;
     }
 
+    function validateTimeFormat (testTime)
+    {
+      const theTime = new String(testTime);
+      var include = ":";
+      var a = document.getElementById("a");
+      
+      if (!(theTime.includes(include))) {  
+        alert("Missing '" + include + "' in time field hh:mm");
+        a.innerHTML = "found '" + include + "' in your string";
+      }
 
+      return theTime;
+     }
 
     async function createNote(event) {
       event.preventDefault();
@@ -115,7 +129,7 @@ import {createNote  as createNoteMutation,updateNote as updateNoteMutation,} fro
         location: form.get("location"),
         pitch: form.get("pitch"),
         realdate: convertStringToDate(form.get("date")),
-        realtime: form.get("time"), 
+        realtime: validateTimeFormat(form.get("time")), 
         isdeleted: "false",
         };
       await API.graphql({
