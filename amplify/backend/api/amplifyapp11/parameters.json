@@ -2,5 +2,5 @@
   "AppSyncApiName": "amplifyapp11",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2022-10-07T14:44:41.950Z"
+  "AuthModeLastUpdated": "2023-01-22T19:11:15.432Z"
 }

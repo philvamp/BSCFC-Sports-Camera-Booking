@@ -61,7 +61,7 @@ import {createNote  as createNoteMutation,updateNote as updateNoteMutation,} fro
     const apiData = await API.graphql({ query: listNotes, variables: { filter: filter }});
     const notesFromAPI = apiData.data.listNotes.items;
     let sortedAsc = notesFromAPI.sort((a, b) => new Date(a.realdate) - new Date(b.realdate),); 
-    setNotes(sortedAsc);
+    setNotes(sortedAsc)     ;
   }
   
 
@@ -176,7 +176,7 @@ import {createNote  as createNoteMutation,updateNote as updateNoteMutation,} fro
 
           <TextField
             name="name" 
-            placeholder="Mangers Name"
+            placeholder="Managers Name"
             label="Managers Name"
             labelHidden
             variation="quiet"
