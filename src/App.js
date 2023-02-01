@@ -176,7 +176,7 @@ import {createNote  as createNoteMutation,updateNote as updateNoteMutation,} fro
 
           <TextField
             name="name" 
-            placeholder="Managers Name"
+            placeholder="Manager's Name"
             label="Managers Name"
             labelHidden
             variation="quiet"
@@ -184,7 +184,7 @@ import {createNote  as createNoteMutation,updateNote as updateNoteMutation,} fro
           />
           <TextField
             name="contact"
-            placeholder="Contact Name"
+            placeholder="Contact's Name"
             label="Conacts Name"
             labelHidden
             variation="quiet"
